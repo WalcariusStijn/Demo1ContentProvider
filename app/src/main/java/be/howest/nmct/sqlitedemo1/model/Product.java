@@ -65,6 +65,14 @@ public class Product extends BaseObservable {
         this.remark = remark;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productnr=" + productnr +
+                ", productname='" + productname + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
