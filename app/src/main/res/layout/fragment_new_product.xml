@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="newproduct"
+            type="be.howest.nmct.sqlitedemo1.model.Product" />
+
+        <variable
+            name="viewmodel"
+            type="be.howest.nmct.sqlitedemo1.viewmodel.NewProductFragmentViewModel" />
+
+
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="SAVE NEW PRODUCT"
+                    android:textColor="#f50057"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Product No :"
+                        android:textColor="#30333a" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/myedittext"
+                        android:drawablePadding="20dp"
+                        android:hint="Product nr"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@={newproduct.productnr}"
+                        android:inputType="numberDecimal"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name :"
+                        android:textColor="#30333a" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/myedittext"
+                        android:drawablePadding="20dp"
+                        android:hint="Product name"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@={newproduct.productname}"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Quantity :"
+                        android:textColor="#30333a" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/myedittext"
+                        android:drawablePadding="20dp"
+                        android:hint="Quantity"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@={newproduct.quantity}"
+                        android:inputType="numberDecimal"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Price :"
+                        android:textColor="#30333a" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/myedittext"
+                        android:drawablePadding="20dp"
+                        android:hint="Price"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@={newproduct.price}"
+                        android:inputType="numberDecimal"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Remark :"
+                        android:textColor="#30333a" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/myedittext"
+                        android:drawablePadding="20dp"
+                        android:hint="Remark"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@={newproduct.remark}"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{() -> viewmodel.saveNewProduct()}"
+            android:src="@android:drawable/ic_input_add" />
+    </FrameLayout>
+
+</layout>
