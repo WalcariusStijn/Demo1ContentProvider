@@ -73,6 +73,6 @@ public class Product extends BaseObservable {
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", remark='" + remark + '\'' +
-                '}';
+                '}'; 
     }
 }
