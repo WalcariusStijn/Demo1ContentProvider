@@ -46,16 +46,12 @@ public class NewProductFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.fragment_new_product,container,false);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_product, container, false);
         NewProductFragmentViewModel newProductFragmentViewModel = new NewProductFragmentViewModel(this.getContext(), binding, this);
         return binding.getRoot();
 
-        //binding.setNewproduct(newProduct);
-    }
-
-    public void showSnackbar(String message) {
-        Snackbar.make(binding.fab, message, Snackbar.LENGTH_LONG).show();
     }
 
 
@@ -69,57 +65,12 @@ public class NewProductFragment extends Fragment {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-/*
- //final View view = inflater.inflate(R.layout.fragment_new_product, container, false);
-
-        final LinearLayout linearlayout1 = (LinearLayout) view.findViewById(R.id.linearlayout1);
-
-        Button buttonSave = (Button) view.findViewById(R.id.buttonSave);
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("ViewModel", "saving to sqlite");
-                //saveProductToDb();
-                Snackbar.make(linearlayout1, "Product "+newProduct.getProductname()  +"succesfull saved: ", Snackbar.LENGTH_LONG).show();
-            }
-        });
-*/
 
 
 
 
 
-    /*private void saveProductToDb() {
-        ContentValues values = new ContentValues();
-        values.put(Contract.ProductsColumns.COLUMN_PRODUCT_NR, newProduct.getProductnr());
-        values.put(Contract.ProductsColumns.COLUMN_PRICE, newProduct.getPrice());
-        values.put(Contract.ProductsColumns.COLUMN_PRODUCT_NAME, newProduct.getProductname());
-        values.put(Contract.ProductsColumns.COLUMN_QUANTITY, newProduct.getQuantity());
-        values.put(Contract.ProductsColumns.COLUMN_REMARK, newProduct.getRemark());
-        executeAsyncTask(new SaveNewProductToDBTask(this.getContext()), values);
-    }
 
-    private void resetProduct(){
 
-    }
-
-    static private <T> void executeAsyncTask(AsyncTask<T, ?, ?> task, T... params) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-        } else {
-            task.execute(params);
-        }
-    }
-
-*/
-    /*    private FragmentNewProductBinding binding;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_product, container, false);
-        NewProductFragmentViewModel newProductFragmentViewModel = new NewProductFragmentViewModel(getActivity(), binding);
-        return binding.getRoot();
-    }*/
 
 }

@@ -2,10 +2,14 @@ package be.howest.nmct.sqlitedemo1.binders;
 
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableField;
 import android.databinding.ObservableList;
+import android.databinding.adapters.TextViewBindingAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import be.howest.nmct.sqlitedemo1.adaptar.ProductAdaptar;
 import be.howest.nmct.sqlitedemo1.model.Product;
@@ -56,4 +60,23 @@ public class ProductsBinder {
         else
             return -1;
     }
+//
+//    @InverseBindingAdapter(attribute = "android:text", event = "android:textAttrChanged")
+//    public static void captureTextValue(TextView view, ObservableField<CharSequence> value) {
+//        CharSequence newValue = view.getText();
+//        CharSequence oldValue = value.get();
+//        if (oldValue == null) {
+//            value.set(newValue);
+//        } else if (!newValue.equals(oldValue)) {
+//            value.set(newValue);
+//        }
+//    }
+//    @BindingAdapter(value = {"android:beforeTextChanged", "android:onTextChanged",
+//            "android:afterTextChanged", "android:textAttrChanged"},
+//            requireAll = false)
+//    public static void setTextWatcher(TextView view, final TextViewBindingAdapter.BeforeTextChanged before,
+//                                      final TextViewBindingAdapter.OnTextChanged on, final TextViewBindingAdapter.AfterTextChanged after,
+//                                      final InverseBindingListener textAttrChanged) {
+//
+//    }
 }

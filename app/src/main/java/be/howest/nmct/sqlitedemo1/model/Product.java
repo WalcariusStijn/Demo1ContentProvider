@@ -8,9 +8,7 @@ import android.widget.EditText;
 
 import be.howest.nmct.sqlitedemo1.R;
 
-/**
- * Created by Stijn on 25/09/2016.
- */
+
 public class Product extends BaseObservable {
 
     private int productnr = 0;
@@ -18,7 +16,6 @@ public class Product extends BaseObservable {
     private int quantity = 0;
     private double price = 0;
     private String remark = "";
-
 
     @Bindable
     public int getProductnr() {
@@ -73,6 +70,6 @@ public class Product extends BaseObservable {
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", remark='" + remark + '\'' +
-                '}'; 
+                '}';
     }
 }

@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.howest.nmct.sqlitedemo1">
 
-    <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <permission android:name="be.howest.nmct.howestproducts.provider.permission.READ_PROVIDER" />
 
@@ -27,6 +32,21 @@
             android:permission="be.howest.nmct.howestproducts.provider.permission.READ_PROVIDER"
             android:enabled="true"
             android:exported="true" />
+
+        <service
+            android:name=".auth.AuthenticatorService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/account_authenticator" />
+        </service>
+
+        <activity android:name=".view.LoginActivity"/>
 
     </application>
 

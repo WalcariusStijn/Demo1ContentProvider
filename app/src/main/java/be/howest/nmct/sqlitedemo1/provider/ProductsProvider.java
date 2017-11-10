@@ -21,13 +21,14 @@ import be.howest.nmct.sqlitedemo1.database.DatabaseHelper;
  */
 public class ProductsProvider extends ContentProvider {
 
+    //Onze contentprovider spreekt met sqlite database
     private DatabaseHelper databaseHelper;
-    //private static final String PRODUCTS_DB = "Products";
 
+    //De URI-matcher controleert binnenkomende URI's: zijn ze voor ons bestemd?
+    //Vooraf: we maken duidelijk wie er binnen mag: alle URI's nauwkeurig doorgeven.
+    //Hij geeft aan elke toegelaten URI een uniek nummer.
     private static final int PRODUCTS = 1;
     private static final int PRODUCTS_ID = 2;
-
-    private static HashMap<String, String> PRODUCTS_PROJECTION_MAP;
 
     private static final UriMatcher uriMatcher;
 
@@ -37,6 +38,12 @@ public class ProductsProvider extends ContentProvider {
         uriMatcher.addURI(Contract.AUTHORITY, "products/#", PRODUCTS_ID);
     }
 
+    private static HashMap<String, String> PRODUCTS_PROJECTION_MAP;
+
+
+    //aanmaken van contentprovider:
+    // 1 connectie leggen met database door databasesHelper op te vragen
+    // 2 HashMap laat toe om andere kolomnamen aan resultaat door te geven
     @Override
     public boolean onCreate() {
         databaseHelper = DatabaseHelper.getInstance(getContext());
@@ -50,6 +57,9 @@ public class ProductsProvider extends ContentProvider {
         return true;
     }
 
+    // Opvragen van data aan contentprovider
+    // URI-matcher geeft getal terug. Zo weten we precies welke data er verlangd wordt
+    // Via QueryBuilder stellen we onze query op punt: tabel, projectionmap, selection, selection args
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
@@ -91,6 +101,9 @@ public class ProductsProvider extends ContentProvider {
         return data;
     }
 
+    // Wat geeft de URI terug?
+    // URI-matcher controleert URI -> juiste constante uit contract terug geven
+    // Return the MIME type corresponding to a content URI
     @Nullable
     @Override
     public String getType(Uri uri) {
@@ -104,6 +117,9 @@ public class ProductsProvider extends ContentProvider {
         }
     }
 
+    //Via contentprovider wordt data toegevoegd
+    // URI-matcher geeft getal terug. Zo weten we precies welke data er toegevoegd moet worden
+    // als toevoeging slaagt, geven we een unieke URI naar nieuw toegevoegde item terug
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
@@ -114,6 +130,7 @@ public class ProductsProvider extends ContentProvider {
                         be.howest.nmct.sqlitedemo1.database.Contract.ProductsDB.TABLE_NAME, null, values);
                 if (newRowId > 0) {
                     Uri productItemUri = ContentUris.withAppendedId(Contract.PRODUCTS_ITEM_URI, newRowId);
+                    //eventuele observers verwittigen
                     getContext().getContentResolver().notifyChange(productItemUri, null);
                     return productItemUri;
                 }
@@ -126,6 +143,7 @@ public class ProductsProvider extends ContentProvider {
         throw new IllegalArgumentException();
     }
 
+    //verwijderen van data via content provider
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
@@ -162,6 +180,7 @@ public class ProductsProvider extends ContentProvider {
         return count;
     }
 
+    //analoog voor update
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();

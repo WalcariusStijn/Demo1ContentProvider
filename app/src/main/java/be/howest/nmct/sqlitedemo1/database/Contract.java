@@ -2,9 +2,7 @@ package be.howest.nmct.sqlitedemo1.database;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by Stijn on 26/09/2016.
- */
+
 public class Contract {
 
         /*

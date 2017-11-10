@@ -54,7 +54,7 @@
                         android:text="Product No :"
                         android:textColor="#30333a" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
@@ -81,7 +81,7 @@
                         android:text="Product Name :"
                         android:textColor="#30333a" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
@@ -107,7 +107,7 @@
                         android:text="Quantity :"
                         android:textColor="#30333a" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
@@ -134,7 +134,7 @@
                         android:text="Price :"
                         android:textColor="#30333a" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
@@ -161,7 +161,7 @@
                         android:text="Remark :"
                         android:textColor="#30333a" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import be.howest.nmct.sqlitedemo1.R;
-import be.howest.nmct.sqlitedemo1.databinding.RowProductBinding;
+import be.howest.nmct.sqlitedemo1.databinding.RowProduct2Binding;
 import be.howest.nmct.sqlitedemo1.model.Product;
 
 /**
@@ -29,7 +29,8 @@ public class ProductAdaptar extends RecyclerView.Adapter<ProductAdaptar.Viewhold
 
     @Override
     public Viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RowProductBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.row_product, parent, false);
+        //RowProductBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.row_product2, parent, false);
+        RowProduct2Binding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.row_product2, parent, false);
         ProductAdaptar.Viewholder vh = new ProductAdaptar.Viewholder(binding);
         return vh;
     }
@@ -49,16 +50,16 @@ public class ProductAdaptar extends RecyclerView.Adapter<ProductAdaptar.Viewhold
 
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        final RowProductBinding binding;
+        final RowProduct2Binding binding;
 
-        public Viewholder(RowProductBinding binding) {
+        public Viewholder(RowProduct2Binding binding) {
             super(binding.getRoot());
             this.binding = binding;
             //opgelet: niet vergeten!
             binding.getRoot().setOnClickListener(this);
         }
 
-        public RowProductBinding getBinding() {
+        public RowProduct2Binding getBinding() {
             return binding;
         }
 

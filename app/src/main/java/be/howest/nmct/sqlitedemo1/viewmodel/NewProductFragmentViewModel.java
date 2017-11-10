@@ -1,5 +1,6 @@
 package be.howest.nmct.sqlitedemo1.viewmodel;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.databinding.BaseObservable;
@@ -7,7 +8,10 @@ import android.databinding.Bindable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import be.howest.nmct.sqlitedemo1.database.Contract;
 import be.howest.nmct.sqlitedemo1.database.SaveNewProductToDBTask;
@@ -16,9 +20,7 @@ import be.howest.nmct.sqlitedemo1.model.Product;
 import be.howest.nmct.sqlitedemo1.view.NewProductFragment;
 import be.howest.nmct.sqlitedemo1.view.ProductsFragment;
 
-/**
- * Created by Stijn on 26/09/2016.
- */
+
 public class NewProductFragmentViewModel extends BaseObservable {
 
     private FragmentNewProductBinding binding;
@@ -42,24 +44,14 @@ public class NewProductFragmentViewModel extends BaseObservable {
         Log.d("ViewModel", "saving to sqlite");
         saveProductToDb();
         resetProduct();
-        newProductFragment.showSnackbar("Product saved!");
+        Snackbar.make(binding.getRoot(), "Product saved!", Snackbar.LENGTH_LONG).show();
         newProductFragment.hideKeyboard();
         Log.d("ViewModel", "saved to sqlite");
-        //Snackbar.make(context., "Product saved into database!", Snackbar.LENGTH_LONG).show();
-    }
+     }
 
 
-/*
-    public View.OnClickListener saveProduct(){
-        return new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Log.d("ViewModel","saving to sqlite");
-                Snackbar.make(null, "Product student: ", Snackbar.LENGTH_LONG).show();
-            }
-        };
-    }
-*/
+
+
 
 
     private void saveProductToDb() {
@@ -71,7 +63,7 @@ public class NewProductFragmentViewModel extends BaseObservable {
         values.put(Contract.ProductsColumns.COLUMN_QUANTITY, newProduct.getQuantity());
         values.put(Contract.ProductsColumns.COLUMN_REMARK, newProduct.getRemark());
 
-        executeAsyncTask(new SaveNewProductToDBTask(context), values);
+        Helper.executeAsyncTask(new SaveNewProductToDBTask(context), values);
     }
 
     private void resetProduct() {
@@ -79,11 +71,5 @@ public class NewProductFragmentViewModel extends BaseObservable {
         newProduct.setProductnr(0);
     }
 
-    static private <T> void executeAsyncTask(AsyncTask<T, ?, ?> task, T... params) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-        } else {
-            task.execute(params);
-        }
-    }
+
 }

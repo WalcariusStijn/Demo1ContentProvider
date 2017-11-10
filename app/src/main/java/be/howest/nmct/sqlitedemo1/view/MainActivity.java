@@ -2,13 +2,17 @@ package be.howest.nmct.sqlitedemo1.view;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import be.howest.nmct.sqlitedemo1.R;
+import be.howest.nmct.sqlitedemo1.auth.AuthHelper;
+import be.howest.nmct.sqlitedemo1.database.DeleteProductsTask;
+import be.howest.nmct.sqlitedemo1.viewmodel.Helper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +22,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.content);
-        if (savedInstanceState == null) {
-            //ADD INITIAL FRAGMENT
-            //showNewProductFragment();
+//        if (savedInstanceState == null) {
+//            //ADD INITIAL FRAGMENT
+//            //showNewProductFragment();
+//            //showProductsFragment();
+//        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (AuthHelper.isUserLoggedIn(this)) {
             showProductsFragment();
+        } else {
+            //showLoginFragment();
+            showSignInSignOutActivity();
         }
+    }
+
+    private void showSignInSignOutActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +68,21 @@ public class MainActivity extends AppCompatActivity {
             showNewProductFragment();
             return true;
         }
+
+        if (id == R.id.action_delete_list_product){
+            Helper.executeAsyncTask(new DeleteProductsTask(this), null);
+            if (getFragmentManager().findFragmentByTag("showProductsFragment") != null ){
+                ProductsFragment productsFragment = (ProductsFragment) getFragmentManager().findFragmentByTag("showProductsFragment");
+                productsFragment.loadProducts();
+            }
+            return true;
+        }
+
+        if (id == R.id.action_logout){
+            showSignInSignOutActivity();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -77,4 +112,7 @@ public class MainActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         }
     }
+
+
+
 }
