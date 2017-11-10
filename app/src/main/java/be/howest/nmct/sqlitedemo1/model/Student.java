@@ -6,7 +6,5 @@ package be.howest.nmct.sqlitedemo1.model;
 
 public class Student {
 
-    public Student() {
-        System.out.println("Dit was geen goede test");
-    }
+
 }
